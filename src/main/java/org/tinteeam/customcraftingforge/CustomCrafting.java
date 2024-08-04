@@ -2,6 +2,7 @@ package org.tinteeam.customcraftingforge;
 
 import com.mojang.logging.LogUtils;
 
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -18,21 +19,29 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import org.slf4j.Logger;
+import org.tinteeam.customcraftingforge.blocks.ModBlocks;
+import org.tinteeam.customcraftingforge.items.Blank_diamond;
+import org.tinteeam.customcraftingforge.items.FE_coil;
+import org.tinteeam.customcraftingforge.items.ModItems;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(CustomCrafting.MODID)
 public class CustomCrafting
 {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "customcrafting";
+    public static final String MODID = "customcraftingforge";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public CustomCrafting()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        //items register
+        ModItems.register(modEventBus);
+        //blocks register
+        ModBlocks.register(modEventBus);
 
-        // Register the commonSetup method for modloading
+        // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
 
 
@@ -63,7 +72,11 @@ public class CustomCrafting
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
+        {
+            event.accept(ModItems.BLANK_DIAMOND);
+            event.accept(ModItems.FE_COIL);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

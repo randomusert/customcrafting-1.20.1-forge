@@ -1,3 +1,6 @@
+# note!
+the textures don't load for some reason and i am investigating why
+
 
 Source installation information for modders
 -------------------------------------------
