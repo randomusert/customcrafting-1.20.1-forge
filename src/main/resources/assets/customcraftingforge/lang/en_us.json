@@ -1,4 +1,5 @@
 {
   "item.customcraftingforge.blank_diamond": "blank diamond",
-  "item.customcraftingforge.fe_coil": "forge energy coil"
+  "item.customcraftingforge.fe_coil": "forge energy coil",
+  "creativetab.customcrafting_items": "custom crafting"
 }

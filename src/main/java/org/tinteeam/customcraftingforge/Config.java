@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @Mod.EventBusSubscriber(modid = CustomCrafting.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Config
 {
+    /*TODO: make crafting recipe config working!*/
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
     private static final ForgeConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER

@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.tinteeam.customcraftingforge.blocks.ModBlocks;
 import org.tinteeam.customcraftingforge.items.Blank_diamond;
 import org.tinteeam.customcraftingforge.items.FE_coil;
+import org.tinteeam.customcraftingforge.items.ModCreativeModTabs;
 import org.tinteeam.customcraftingforge.items.ModItems;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -36,10 +37,13 @@ public class CustomCrafting
     public CustomCrafting()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        //creative mode tab register
+        ModCreativeModTabs.register(modEventBus);
         //items register
         ModItems.register(modEventBus);
         //blocks register
         ModBlocks.register(modEventBus);
+
 
         // Register the commonSetup method for mod loading
         modEventBus.addListener(this::commonSetup);
